@@ -1,0 +1,46 @@
+# agent-native-repository agent guide
+
+This repository is an Agent Skill, and it follows its own advice.
+
+## Agent Behavior
+
+Only implement changes asked by the user. Do not assume implementation details
+and ask the user if anything is ambiguous.
+
+## Finding your way
+
+| Doc | Read it for |
+| --- | --- |
+| `README.md` | What the skill is, install and use |
+| `skills/agent-native-repository/SKILL.md` | The skill's entry point; start here when changing behavior |
+| `skills/agent-native-repository/references/principles.md` | The contract for each practice |
+
+## Codebase map
+
+Checked by `python3 skills/agent-native-repository/scripts/docs_map_check.py`.
+Update this map in the same change that adds, moves or deletes a file.
+
+```text
+skills/agent-native-repository/SKILL.md                         Skill entry point: discovery, modes, adaptation rules
+skills/agent-native-repository/references/                      Principles, adaptation guide, audit checklist, migration, agent compatibility
+skills/agent-native-repository/scripts/                         Stdlib-only reference checks: docs map, file-size ratchet, pre-push sync
+skills/agent-native-repository/adapters/                        Optional vendor-specific hooks, one directory per agent
+skills/agent-native-repository/assets/templates/                Templates the consumer agent adapts: AGENTS.md, docs, PR template, CI
+.agents/skills/agent-native-repository                          Symlink to the skill so agents working here can use it
+.claude/skills                                                  Symlink to .agents/skills for Claude Code
+install.sh                                                      Installs the skill into another repository
+README.md                                                       Overview, install, use
+AGENTS.md                                                       This guide
+CLAUDE.md                                                       Imports this guide for Claude Code
+GEMINI.md                                                       Points Gemini CLI at this guide
+.github/workflows/ci.yml                                        Runs the map check and the script tests
+```
+
+## Conventions
+
+- Keep the skill stack-agnostic: describe contracts, ship only reference
+  implementations that need Python 3 or POSIX sh, and never hardcode a project's
+  paths, ports or tool choices.
+- Mark any claim about a third-party tool's behavior "verify" until checked.
+- The scripts must keep passing against a real repository before changing them.
+- Branches: `<type>/<slug>`; one PR per line of work; humans merge.

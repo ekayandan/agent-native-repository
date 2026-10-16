@@ -1,0 +1,34 @@
+# Template. Adapt the setup and install steps to the repository's stack.
+# Runs on push to the default branch, and on pull requests only once labeled
+# 'ready-to-merge' (remove the `if:` lines to run on every PR). If a ruleset
+# requires these jobs, a job renamed here must be renamed there too.
+name: CI
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review, labeled]
+  push:
+    branches: [<default branch>]
+
+permissions:
+  contents: read
+
+# A newer push to a pull request replaces the run for the older one. Pushes to
+# the default branch are keyed by commit, so none of them is cancelled.
+concurrency:
+  group: ci-${{ github.event.pull_request.number || github.sha }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    if: github.event_name == 'push' || contains(github.event.pull_request.labels.*.name, 'ready-to-merge')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      # Pin third-party actions to a full commit SHA with a version comment.
+      - uses: actions/checkout@<full-sha> # <version>
+        with:
+          persist-credentials: false
+      # <stack setup, e.g. setup-node / setup-python / setup-go, with caching>
+      # <lockfile-respecting install, e.g. npm ci --ignore-scripts>
+      - run: <quality command>   # the same entry point developers run

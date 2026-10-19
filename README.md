@@ -60,6 +60,15 @@ skills/agent-native-repository/
   assets/templates/             AGENTS.md, decisions, backlog, PR template, CI
 ```
 
+## Quota calculator
+
+Estimate weekly and shorter-window quota exhaustion with the standalone
+[`quota_forecast.py`](skills/agent-native-repository/scripts/quota_forecast.py).
+It runs anywhere with Python 3.7+ and needs no installation or dependencies.
+Supply five values: weekly reset and remaining percentage, shorter-window hours,
+reset and remaining percentage. See the [usage guide](skills/agent-native-repository/references/quota-awareness.md)
+for the command and assumptions. Agents obtain usage readings separately.
+
 ## Status
 
 The reference scripts are tested against the repository this was distilled from.

@@ -14,6 +14,7 @@ and ask the user if anything is ambiguous.
 | `README.md` | What the skill is, install and use |
 | `skills/agent-native-repository/SKILL.md` | The skill's entry point; start here when changing behavior |
 | `skills/agent-native-repository/references/principles.md` | The contract for each practice |
+| `skills/agent-native-repository/references/quota-awareness.md` | Before substantial work when quota readings are available: project exhaustion and warn early |
 
 ## Codebase map
 
@@ -22,8 +23,8 @@ Update this map in the same change that adds, moves or deletes a file.
 
 ```text
 skills/agent-native-repository/SKILL.md                         Skill entry point: discovery, modes, adaptation rules
-skills/agent-native-repository/references/                      Principles, adaptation guide, audit checklist, migration, agent compatibility
-skills/agent-native-repository/scripts/                         Stdlib-only reference checks: docs map, file-size ratchet, pre-push sync
+skills/agent-native-repository/references/                      Principles, adaptation, audit, migration, compatibility, quota awareness
+skills/agent-native-repository/scripts/                         Stdlib-only checks and quota calculator with tests
 skills/agent-native-repository/adapters/                        Optional vendor-specific hooks, one directory per agent
 skills/agent-native-repository/assets/templates/                Templates the consumer agent adapts: AGENTS.md, docs, PR template, CI
 .agents/skills/agent-native-repository                          Symlink to the skill so agents working here can use it
@@ -34,6 +35,7 @@ AGENTS.md                                                       This guide
 CLAUDE.md                                                       Imports this guide for Claude Code
 GEMINI.md                                                       Points Gemini CLI at this guide
 .github/workflows/ci.yml                                        Runs the map check and the script tests
+.gitignore                                                     Excludes local and generated files
 ```
 
 ## Conventions

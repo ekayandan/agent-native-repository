@@ -57,6 +57,11 @@ docs/                   See "Finding your way" above
 
 ## Conventions
 
+- Before substantial work, when usage readings are available, follow
+  `.agents/skills/agent-native-repository/references/quota-awareness.md` to
+  forecast quota exhaustion and warn early. Keep this rule only if the skill
+  is installed, or adapt the path to where you copied the guide and calculator.
+
 - `<quality command>` runs <type check, lint, tests, map check>. Run it before
   handing back.
 - Source files stay under <300> lines (enforced by <rule>). Comment lines do not

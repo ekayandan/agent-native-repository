@@ -7,6 +7,10 @@ This repository is an Agent Skill, and it follows its own advice.
 Only implement changes asked by the user. Do not assume implementation details
 and ask the user if anything is ambiguous.
 
+Keep token use low without being asked: one task per session, delegate wide
+reads and searches to a cheap subagent, prefer text over screenshots, bound
+file and command output. See the `token-efficiency` skill.
+
 ## Finding your way
 
 | Doc | Read it for |
@@ -14,6 +18,7 @@ and ask the user if anything is ambiguous.
 | `README.md` | What the skill is, install and use |
 | `skills/agent-native-repository/SKILL.md` | The skill's entry point; start here when changing behavior |
 | `skills/agent-native-repository/references/principles.md` | The contract for each practice |
+| `skills/token-efficiency/SKILL.md` | The token-efficiency skill: change it when updating cost-saving habits |
 | `skills/agent-native-repository/references/quota-awareness.md` | Before substantial work when quota readings are available: project exhaustion and warn early |
 
 ## Codebase map
@@ -27,7 +32,9 @@ skills/agent-native-repository/references/                      Principles, adap
 skills/agent-native-repository/scripts/                         Stdlib-only checks and quota calculator with tests
 skills/agent-native-repository/adapters/                        Optional vendor-specific hooks, one directory per agent
 skills/agent-native-repository/assets/templates/                Templates the consumer agent adapts: AGENTS.md, docs, PR template, CI
+skills/token-efficiency/                                        Token-efficiency skill: cheap habits for agents, plus measuring reference
 .agents/skills/agent-native-repository                          Symlink to the skill so agents working here can use it
+.agents/skills/token-efficiency                                 Symlink to the token-efficiency skill
 .claude/skills                                                  Symlink to .agents/skills for Claude Code
 install.sh                                                      Installs the skill into another repository
 README.md                                                       Overview, install, use

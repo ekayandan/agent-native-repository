@@ -9,6 +9,10 @@ verify each command by running it. Keep this file short: route to docs for depth
 Only implement changes asked by the user. Do not assume implementation details
 and ask the user if anything is ambiguous.
 
+Keep token use low without being asked: one task per session, delegate wide
+reads and searches to a cheap subagent, prefer text over screenshots, bound
+file and command output. See the `token-efficiency` skill.
+
 ## Finding your way
 
 Start from the codebase map below; search the tree only when it does not answer

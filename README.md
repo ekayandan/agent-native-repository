@@ -25,6 +25,13 @@ of copying a stack-specific setup.
 9. CI and dependency hygiene
 10. Progressive-disclosure skills for recurring domains
 
+## Also included: token-efficiency
+
+A second, small skill, [token-efficiency](skills/token-efficiency/SKILL.md),
+teaches agents the cheapest habits for low token use on their own: short
+sessions, delegating reads to a cheap subagent, text over screenshots, bounded
+output, model routing. It is installed alongside the main skill.
+
 ## Install
 
 ```sh
@@ -33,7 +40,7 @@ git clone https://github.com/ekayandan/agent-native-repository.git
 ./agent-native-repository/install.sh /path/to/your/repo --link   # local symlink
 ```
 
-This places the skill at `.agents/skills/agent-native-repository/` and points
+This places the skills at `.agents/skills/agent-native-repository/` and `.agents/skills/token-efficiency/` and points
 `.claude/skills` at `.agents/skills`. For Gemini CLI and Codex discovery, see
 [agent-compatibility.md](skills/agent-native-repository/references/agent-compatibility.md).
 

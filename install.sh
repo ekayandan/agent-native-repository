@@ -1,7 +1,7 @@
 #!/bin/sh
-# Install the agent-native-repository skill into a target repository.
+# Install the agent-native-repository and token-efficiency skills into a target repository.
 #   ./install.sh <target-repo> [--link]
-# Copies the skill to <target>/.agents/skills/agent-native-repository (portable,
+# Copies the skill to <target>/.agents/skills/<skill> (portable,
 # committable). With --link it symlinks to this clone instead (local only; do
 # not commit a link that points outside the repository). Also makes
 # <target>/.claude/skills point at .agents/skills when .claude/skills is absent.
@@ -17,21 +17,21 @@ if [ -z "$target" ] || [ ! -d "$target/.git" ]; then
 fi
 
 here=$(cd "$(dirname "$0")" && pwd)
-src="$here/skills/agent-native-repository"
-dest="$target/.agents/skills/agent-native-repository"
-
-if [ -e "$dest" ] || [ -L "$dest" ]; then
-  echo "$dest already exists; remove it first to reinstall." >&2
-  exit 1
-fi
-
 mkdir -p "$target/.agents/skills"
-if [ "$mode" = "link" ]; then
-  ln -s "$src" "$dest"
-else
-  cp -R "$src" "$dest"
-fi
-echo "installed: $dest ($mode)"
+for name in agent-native-repository token-efficiency; do
+  src="$here/skills/$name"
+  dest="$target/.agents/skills/$name"
+  if [ -e "$dest" ] || [ -L "$dest" ]; then
+    echo "left alone: $dest already exists; remove it first to reinstall." >&2
+    continue
+  fi
+  if [ "$mode" = "link" ]; then
+    ln -s "$src" "$dest"
+  else
+    cp -R "$src" "$dest"
+  fi
+  echo "installed: $dest ($mode)"
+done
 
 if [ ! -e "$target/.claude/skills" ] && [ ! -L "$target/.claude/skills" ]; then
   mkdir -p "$target/.claude"

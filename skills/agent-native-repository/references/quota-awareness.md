@@ -1,5 +1,13 @@
 # Quota awareness
 
+## Enable or disable
+
+Off unless the repository's `AGENTS.md` contains the line
+`Quota awareness: on`. `Quota awareness: off`, or no line, means do not read
+usage, run the calculator or warn about quota. Re-check the line when starting
+work; the user may flip it at any time. This switch does not affect context
+awareness in the `token-efficiency` skill, which is always on.
+
 Before substantial work, when usage readings are available, estimate whether
 either account quota will run out before its reset. Warn the user early if so,
 and leave a resumable handoff at meaningful checkpoints when quota is low.

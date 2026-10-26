@@ -61,10 +61,12 @@ docs/                   See "Finding your way" above
 
 ## Conventions
 
-- Before substantial work, when usage readings are available, follow
-  `.agents/skills/agent-native-repository/references/quota-awareness.md` to
-  forecast quota exhaustion and warn early. Keep this rule only if the skill
-  is installed, or adapt the path to where you copied the guide and calculator.
+- Quota awareness: off
+  <!-- Set to "on" to have agents follow
+  `.agents/skills/agent-native-repository/references/quota-awareness.md`
+  before substantial work: forecast quota exhaustion and warn early. Adapt the
+  path if you copied the guide elsewhere. Context awareness (token-efficiency
+  skill) is always on and needs no setting. -->
 
 - `<quality command>` runs <type check, lint, tests, map check>. Run it before
   handing back.

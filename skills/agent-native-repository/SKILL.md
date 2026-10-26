@@ -72,8 +72,9 @@ Full contracts, reasons and verification are in
    pinned actions, grouped dependency updates.
 10. **Progressive-disclosure skills** for recurring domains.
 
-Optional: **Quota awareness** before substantial work when usage readings are
-available. Follow [quota-awareness.md](references/quota-awareness.md) and use its
+Optional: **Quota awareness**, only when the repository's `AGENTS.md` says
+`Quota awareness: on`; then, before substantial work when usage readings are
+available, follow [quota-awareness.md](references/quota-awareness.md) and use its
 standalone calculator to project weekly and shorter-window exhaustion.
 
 ## Adaptation rules

@@ -30,7 +30,9 @@ of copying a stack-specific setup.
 A second, small skill, [token-efficiency](skills/token-efficiency/SKILL.md),
 teaches agents the cheapest habits for low token use on their own: short
 sessions, delegating reads to a cheap subagent, text over screenshots, bounded
-output, model routing. It is installed alongside the main skill.
+output, model routing, plus always-on context awareness: long output goes to
+files, and agents suggest compact, clear or a new thread as cache re-reads grow.
+It is installed alongside the main skill.
 
 ## Install
 

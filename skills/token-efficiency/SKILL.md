@@ -59,6 +59,13 @@ something different, do that.
    break re-writes the whole context at the higher cache-write price. Compact
    or restart before a long pause.
 
+## Context awareness (always on)
+
+Write long output to files instead of chat, and at breakpoints suggest
+compact, clear or a new thread when re-read cost is climbing. Soft guards only:
+the user decides. Thresholds and rules in
+[context-awareness.md](references/context-awareness.md).
+
 ## Self-check at natural breakpoints
 
 When a subtask finishes, ask: is the context over ~150K or are the next steps

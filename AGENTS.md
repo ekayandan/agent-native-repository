@@ -7,9 +7,17 @@ This repository is an Agent Skill, and it follows its own advice.
 Only implement changes asked by the user. Do not assume implementation details
 and ask the user if anything is ambiguous.
 
-Keep token use low without being asked: one task per session, delegate wide
-reads and searches to a cheap subagent, prefer text over screenshots, bound
-file and command output. See the `token-efficiency` skill.
+## Efficiency
+
+Hand high-volume work to a subagent on the cheapest capable model (Haiku by
+default): doc reads, codebase search, browser flows, builds/tests/logs, web
+research, diff review. Use a filtering script or MCP when it can answer
+directly. Brief each worker with the goal, scope and constraints. Workers
+report back in ≤1.5k tokens: outcome, `path:line` evidence, changes and how
+they were verified, open questions, and paths to full logs. The main agent
+keeps the plan and makes the decisions. Run independent tasks in parallel.
+Keep one task per session and prefer text over screenshots. See the
+`token-efficiency` skill.
 
 ## Finding your way
 
